@@ -9,7 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class MascotitasFXApp extends Application {
+public class ClientRegister extends Application {
 
     @Override
     public void start(Stage primaryStage) {

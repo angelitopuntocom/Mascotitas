@@ -20,6 +20,13 @@ public class Mascota {
 
     private String raza;
 
+    @Column
+    private String tipo;
+
+    @Column
+    private int edad;
+
+
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "vacunas", joinColumns = @JoinColumn(name = "numero_mascota"))
     @Column(name = "nombre_vacuna")
@@ -43,6 +50,12 @@ public class Mascota {
 
     public String getRaza() { return raza; }
     public void setRaza(String raza) { this.raza = raza; }
+
+    public String getTipo() { return tipo; }
+    public void setTipo(String tipo) { this.tipo = tipo; }
+
+    public int getEdad() { return edad; }
+    public void setEdad(int edad) { this.edad = edad; }
 
     public List<String> getVacunas() { return vacunas; }
     public void setVacunas(List<String> vacunas) { this.vacunas = vacunas; }
