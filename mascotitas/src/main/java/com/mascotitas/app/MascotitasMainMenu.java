@@ -30,14 +30,12 @@ public class MascotitasMainMenu extends Application {
         btnCliente.setOnAction(e -> new ClientRegister().start(new Stage())); // Reutiliza formulario de cliente
         btnClienteController.setOnAction(e -> new ClienteControllerFX().mostrarVentanaRegistro()); // Abre ventana de registro de client
         btnMascota.setOnAction(e -> new MascotaFXApp().start(new Stage()));
+        btnPaquete.setOnAction(e -> new PaqueteFXApp().start(new Stage()));
 
         btnCita.setOnAction(e -> {
             //new CitaFXApp().start(new Stage());
         });
 
-        btnPaquete.setOnAction(e -> {
-            //new PaqueteFXApp().start(new Stage());
-        });
 
         VBox layout = new VBox(15, btnCliente, btnClienteController, btnMascota, btnCita, btnPaquete);
         layout.setAlignment(Pos.CENTER);
