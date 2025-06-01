@@ -15,6 +15,9 @@ public class Cliente extends Persona {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int numeroCliente;
 
+    @Column(length = 20)
+    private String telefono; // ✅ Aquí se declara
+    
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Mascota> mascotas = new ArrayList<>();
 
@@ -28,6 +31,20 @@ public class Cliente extends Persona {
 
     public Cliente(String nombre, String paterno, String materno, Date fechaNacimiento, String curp) {
         super(nombre, paterno, materno, fechaNacimiento, curp);
+    }
+
+
+    // ✅ Getters y setters para teléfono
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public int getNumeroCliente() { return numeroCliente; }

@@ -1,6 +1,8 @@
 com/mascotitas/model/Cliente.class
+com/mascotitas/app/MascotitasFXApp.class
 com/mascotitas/exception/MascotaNoVacunadaException.class
 com/mascotitas/model/Cita.class
+com/mascotitas/util/HibernateUtil.class
 com/mascotitas/model/Mascota.class
 com/mascotitas/model/Gerente.class
 com/mascotitas/app/MascotitasApp.class
@@ -11,5 +13,6 @@ com/mascotitas/exception/CitaOcupadaException.class
 com/mascotitas/model/Persona.class
 com/mascotitas/model/Paquete.class
 com/mascotitas/model/enums/Sucursal.class
+com/mascotitas/dao/ClienteDAO.class
 com/mascotitas/model/Tarjeta.class
 com/mascotitas/service/CitaService.class
