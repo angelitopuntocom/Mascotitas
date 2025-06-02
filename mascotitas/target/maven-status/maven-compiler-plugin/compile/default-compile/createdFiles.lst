@@ -4,6 +4,7 @@ com/mascotitas/model/Cliente.class
 com/mascotitas/dao/VeterinarioDAO.class
 com/mascotitas/app/MascotaFXApp.class
 com/mascotitas/model/Cita.class
+com/mascotitas/app/AltaGerenteFX.class
 com/mascotitas/util/HibernateUtil.class
 com/mascotitas/model/Mascota.class
 com/mascotitas/model/Gerente.class
@@ -12,6 +13,7 @@ com/mascotitas/dao/MascotaDAO.class
 com/mascotitas/app/CitaFXApp.class
 com/mascotitas/model/Asistente.class
 com/mascotitas/ui/AsistenteForm.class
+com/mascotitas/dao/GerenteDAO.class
 com/mascotitas/exception/CitaOcupadaException.class
 com/mascotitas/exception/VeterinarioNoDisponibleException.class
 com/mascotitas/model/Tarjeta.class
