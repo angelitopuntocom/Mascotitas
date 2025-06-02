@@ -15,4 +15,14 @@ public class VeterinarioDAO {
             return Collections.emptyList();
         }
     }
+    public void guardar(Veterinario veterinario) {
+    try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        session.beginTransaction();
+        session.persist(veterinario);
+        session.getTransaction().commit();
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+
 }

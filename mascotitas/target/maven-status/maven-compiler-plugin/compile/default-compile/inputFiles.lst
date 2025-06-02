@@ -8,6 +8,8 @@
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/app/PaqueteFXApp.java
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/dao/MascotaDAO.java
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/ui/ClienteControllerFX.java
+/home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/ui/AsistenteForm.java
+/home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/ui/VeterinarioForm.java
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/ui/ClienteForm.java
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/service/AdopcionService.java
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/model/Gerente.java

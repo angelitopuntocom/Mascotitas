@@ -15,4 +15,14 @@ public class AsistenteDAO {
             return Collections.emptyList();
         }
     }
+    public void guardar(Asistente asistente) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            session.beginTransaction();
+            session.persist(asistente);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
