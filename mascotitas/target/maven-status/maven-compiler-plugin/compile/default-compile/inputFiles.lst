@@ -1,8 +1,10 @@
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/ui/MascotaForm.java
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/model/Cliente.java
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/app/MascotitasApp.java
+/home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/dao/VeterinarioDAO.java
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/model/Asistente.java
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/model/Mascota.java
+/home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/app/CitaFXApp.java
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/app/PaqueteFXApp.java
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/dao/MascotaDAO.java
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/ui/ClienteControllerFX.java
@@ -14,6 +16,7 @@
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/model/Tarjeta.java
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/app/MascotitasMainMenu.java
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/service/VacunaService.java
+/home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/exception/AsistenteNoDisponibleException.java
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/model/Paquete.java
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/dao/CitaDAO.java
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/service/PagoService.java
@@ -25,6 +28,9 @@
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/model/Cita.java
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/service/CitaService.java
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/model/Persona.java
+/home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/exception/VeterinarioNoDisponibleException.java
+/home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/service/RevisionDeCitas.java
+/home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/dao/AsistenteDAO.java
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/dao/PaqueteDAO.java
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/util/HibernateUtil.java
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/ui/MainWindow.java

@@ -4,18 +4,15 @@ import com.mascotitas.interfaces.RevisionDeCitas;
 import com.mascotitas.model.*;
 import com.mascotitas.exception.CitaOcupadaException;
 import com.mascotitas.exception.MascotaNoVacunadaException;
+import com.mascotitas.exception.AsistenteNoDisponibleException;
+import com.mascotitas.exception.VeterinarioNoDisponibleException;
 
 import jakarta.persistence.*;
 import java.util.*;
 
-/*
- * Clase: CitaService
- * Implementa RevisionDeCitas y maneja lógica de agendamiento de citas
- */
 public class CitaService implements RevisionDeCitas {
 
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("mascotitasPU");
-
 
     @Override
     public boolean asistenteDisponible(String nombre, String paterno, String materno) {
@@ -78,7 +75,11 @@ public class CitaService implements RevisionDeCitas {
         }
     }
 
-    public void agendarCita(Cita cita) throws CitaOcupadaException, MascotaNoVacunadaException {
+    public void agendarCita(Cita cita) throws CitaOcupadaException, MascotaNoVacunadaException, AsistenteNoDisponibleException, VeterinarioNoDisponibleException {
+        if (cita.getMascota() == null || cita.getCliente() == null) {
+            throw new IllegalArgumentException("La cita debe tener asignada una mascota y un cliente.");
+        }
+
         if (!revisarDisponibilidad(cita.getFechaHora())) {
             throw new CitaOcupadaException("No puede agendar la cita, ya se encuentra ocupada");
         }
@@ -87,11 +88,42 @@ public class CitaService implements RevisionDeCitas {
             throw new MascotaNoVacunadaException("No tiene vacunas suministradas");
         }
 
+        // Validar asistente disponible
+        Asistente asistente = cita.getAsistente();
+        if (asistente != null && !asistenteDisponible(asistente.getNombre(), asistente.getPaterno(), asistente.getMaterno())) {
+            throw new AsistenteNoDisponibleException("El asistente ya tiene una cita en esa hora.");
+        }
+
+        // Validar veterinario disponible
+        Veterinario veterinario = cita.getVeterinario();
+        if (veterinario != null && !veterinarioDisponible(veterinario.getNombre(), veterinario.getPaterno(), veterinario.getMaterno())) {
+            throw new VeterinarioNoDisponibleException("El veterinario ya tiene una cita en esa hora.");
+        }
+
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
             em.persist(cita);
             em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
+
+    // [Opcional] Método para listar citas ordenadas por criterio
+    public List<Cita> listarCitasOrdenadasPor(String criterio) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            String campo;
+            switch (criterio) {
+                case "fecha": campo = "c.fechaHora"; break;
+                case "nombre": campo = "c.cliente.nombre"; break;
+                case "paterno": campo = "c.cliente.paterno"; break;
+                case "materno": campo = "c.cliente.materno"; break;
+                default: campo = "c.fechaHora";
+            }
+            String jpql = "SELECT c FROM Cita c ORDER BY " + campo;
+            return em.createQuery(jpql, Cita.class).getResultList();
         } finally {
             em.close();
         }

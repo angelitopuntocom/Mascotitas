@@ -1,6 +1,8 @@
 package com.mascotitas.model;
 
 import jakarta.persistence.*;
+
+import java.beans.Transient;
 import java.util.*;
 
 /*

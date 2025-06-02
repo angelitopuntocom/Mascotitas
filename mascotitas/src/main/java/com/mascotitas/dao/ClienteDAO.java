@@ -4,6 +4,7 @@ import com.mascotitas.model.Cliente;
 import com.mascotitas.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import java.util.Collections;
 
 import java.util.List;
 
@@ -60,6 +61,16 @@ public class ClienteDAO {
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    // Método adaptado para listar todos los clientes usando Hibernate puro
+    public List<Cliente> listarTodos() {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            return session.createQuery("FROM Cliente", Cliente.class).list();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return java.util.Collections.emptyList();
         }
     }
 }

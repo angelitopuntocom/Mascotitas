@@ -3,41 +3,35 @@ package com.mascotitas.model;
 import jakarta.persistence.*;
 import java.util.*;
 
-/*
- * Clase: Cita
- * Representa una cita médica o de servicio para una mascota
- */
 @Entity
-@Table(name = "citas", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"fechaHora"})
-})
+@Table(name = "citas")
 public class Cita {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int numeroCita;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private Date fechaHora;
 
     @ManyToOne
-    @JoinColumn(name = "id_cliente", nullable = false)
+    @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
     @ManyToOne
-    @JoinColumn(name = "id_mascota", nullable = false)
+    @JoinColumn(name = "id_mascota")
     private Mascota mascota;
 
     @ManyToOne
-    @JoinColumn(name = "id_veterinario", nullable = true)
+    @JoinColumn(name = "id_veterinario")
     private Veterinario veterinario;
 
     @ManyToOne
-    @JoinColumn(name = "id_asistente", nullable = true)
+    @JoinColumn(name = "id_asistente")
     private Asistente asistente;
 
-    @Column(length = 300)
+    @Column(nullable = false)
     private String descripcion;
 
     @ManyToMany
@@ -57,36 +51,26 @@ public class Cita {
         this.descripcion = descripcion;
     }
 
-    public int getId() { return id; }
-
+    // Getters y setters
+    public int getNumeroCita() { return numeroCita; }
     public Date getFechaHora() { return fechaHora; }
     public void setFechaHora(Date fechaHora) { this.fechaHora = fechaHora; }
-
     public Cliente getCliente() { return cliente; }
     public void setCliente(Cliente cliente) { this.cliente = cliente; }
-
     public Mascota getMascota() { return mascota; }
     public void setMascota(Mascota mascota) { this.mascota = mascota; }
-
     public Veterinario getVeterinario() { return veterinario; }
     public void setVeterinario(Veterinario veterinario) { this.veterinario = veterinario; }
-
     public Asistente getAsistente() { return asistente; }
     public void setAsistente(Asistente asistente) { this.asistente = asistente; }
-
     public String getDescripcion() { return descripcion; }
     public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
-
     public List<Paquete> getPaquetes() { return paquetes; }
     public void setPaquetes(List<Paquete> paquetes) { this.paquetes = paquetes; }
-
-    public void agregarPaquete(Paquete paquete) {
-        paquetes.add(paquete);
-    }
+    public void agregarPaquete(Paquete p) { this.paquetes.add(p); }
 
     @Override
     public String toString() {
-        return "Cita #" + id + " | Fecha: " + fechaHora + " | Cliente: " + cliente.getNombre() +
-               " | Mascota: " + mascota.getNombre();
+        return "Cita #" + numeroCita + " - " + fechaHora + " - Cliente: " + cliente + " - Mascota: " + mascota;
     }
 }

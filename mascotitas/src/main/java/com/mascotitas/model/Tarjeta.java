@@ -5,7 +5,7 @@ import java.util.Date;
 
 /*
  * Clase: Tarjeta
- * Representa una tarjeta de pago asociada al cliente
+ * Representa una tarjeta de crédito o débito vinculada a un cliente
  */
 @Entity
 @Table(name = "tarjetas")
@@ -13,27 +13,23 @@ public class Tarjeta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id; // ID interno de la tabla
+    private int id;
 
     @Column(nullable = false, unique = true)
     private long numero;
 
     @Temporal(TemporalType.DATE)
-    private Date fechaVencimiento;
+    private Date vencimiento;
 
     @Column(nullable = false)
     private short cvc;
 
-    @Column(nullable = false)
-    private double saldo;  // Puedes usarlo para simular cargos
-
     public Tarjeta() {}
 
-    public Tarjeta(long numero, Date fechaVencimiento, short cvc, double saldoInicial) {
+    public Tarjeta(long numero, Date vencimiento, short cvc) {
         this.numero = numero;
-        this.fechaVencimiento = fechaVencimiento;
+        this.vencimiento = vencimiento;
         this.cvc = cvc;
-        this.saldo = saldoInicial;
     }
 
     public int getId() { return id; }
@@ -41,25 +37,14 @@ public class Tarjeta {
     public long getNumero() { return numero; }
     public void setNumero(long numero) { this.numero = numero; }
 
-    public Date getFechaVencimiento() { return fechaVencimiento; }
-    public void setFechaVencimiento(Date fechaVencimiento) { this.fechaVencimiento = fechaVencimiento; }
+    public Date getVencimiento() { return vencimiento; }
+    public void setVencimiento(Date vencimiento) { this.vencimiento = vencimiento; }
 
     public short getCvc() { return cvc; }
     public void setCvc(short cvc) { this.cvc = cvc; }
 
-    public double getSaldo() { return saldo; }
-    public void setSaldo(double saldo) { this.saldo = saldo; }
-
-    public boolean realizarCargo(double monto) {
-        if (monto <= saldo) {
-            saldo -= monto;
-            return true;
-        }
-        return false;
-    }
-
     @Override
     public String toString() {
-        return "****" + (numero % 10000) + " - vence: " + fechaVencimiento;
+        return "**** " + String.valueOf(numero).substring(Math.max(0, String.valueOf(numero).length() - 4));
     }
 }
