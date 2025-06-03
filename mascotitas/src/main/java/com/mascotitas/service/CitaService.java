@@ -60,6 +60,42 @@ public class CitaService implements RevisionDeCitas {
             em.close();
         }
     }
+    
+    public List<Cita> buscarCitasPorVeterinario(Veterinario vet) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            String jpql = "SELECT c FROM Cita c " +
+                        "JOIN FETCH c.cliente " +
+                        "JOIN FETCH c.mascota " +
+                        "LEFT JOIN FETCH c.veterinario " +
+                        "LEFT JOIN FETCH c.asistente " +
+                        "WHERE c.veterinario.id = :id";
+            return em.createQuery(jpql, Cita.class)
+                    .setParameter("id", vet.getIdVeterinario())
+                    .getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    public List<Cita> buscarCitasPorAsistente(Asistente asistente) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            String jpql = "SELECT c FROM Cita c " +
+                        "JOIN FETCH c.cliente " +
+                        "JOIN FETCH c.mascota " +
+                        "LEFT JOIN FETCH c.veterinario " +
+                        "LEFT JOIN FETCH c.asistente " +
+                        "WHERE c.asistente.id = :id";
+            return em.createQuery(jpql, Cita.class)
+                    .setParameter("id", asistente.getIdAsistente())
+                    .getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+
 
     @Override
     public boolean revisarDisponibilidad(Date fechaCita) {

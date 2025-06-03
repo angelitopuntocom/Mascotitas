@@ -15,21 +15,23 @@ public class Cita {
     @Column(nullable = false, unique = true)
     private Date fechaHora;
 
-    @ManyToOne
-    @JoinColumn(name = "id_cliente")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_cliente") // <- correcto
     private Cliente cliente;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_mascota")
     private Mascota mascota;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_veterinario")
     private Veterinario veterinario;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_asistente")
     private Asistente asistente;
+
+
 
     @Column(nullable = false)
     private String descripcion;

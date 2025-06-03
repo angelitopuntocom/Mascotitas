@@ -16,6 +16,7 @@ com/mascotitas/model/Asistente.class
 com/mascotitas/app/AdopcionFXApp.class
 com/mascotitas/ui/AsistenteForm.class
 com/mascotitas/dao/GerenteDAO.class
+com/mascotitas/app/ConsultaCitasFXApp.class
 com/mascotitas/exception/CitaOcupadaException.class
 com/mascotitas/exception/VeterinarioNoDisponibleException.class
 com/mascotitas/model/Tarjeta.class
@@ -29,6 +30,7 @@ com/mascotitas/dao/AsistenteDAO.class
 com/mascotitas/dao/PaqueteDAO.class
 com/mascotitas/interfaces/RevisionDeCitas.class
 com/mascotitas/exception/MascotaSinVacunasException.class
+com/mascotitas/dao/CitaDAO.class
 com/mascotitas/model/Veterinario.class
 com/mascotitas/model/Persona.class
 com/mascotitas/model/Paquete.class

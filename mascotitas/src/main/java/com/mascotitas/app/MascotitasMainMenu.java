@@ -27,6 +27,7 @@ public class MascotitasMainMenu extends Application {
         Button btnGerente = new Button("👨‍💼 Registrar Gerente");
         Button btnAdopcion = new Button("🐾 Registrar Adopción");
         Button btnTarjeta = new Button("💳 Registrar Tarjeta");
+        Button btnConsultaCitas = new Button("🔍 Consultar Citas");
 
         btnCliente.setMinWidth(200);
         btnClienteController.setMinWidth(200);
@@ -38,7 +39,20 @@ public class MascotitasMainMenu extends Application {
         btnGerente.setMinWidth(200);
         btnAdopcion.setMinWidth(200);
         btnTarjeta.setMinWidth(200);
-        // Acciones
+        btnConsultaCitas.setMinWidth(200);
+
+        // btnCliente.setStyle("-fx-font-size: 16px; -fx-background-color: #4CAF50; -fx-text-fill: white;");
+        // btnClienteController.setStyle("-fx-font-size: 16px; -fx-background-color: #2196F3; -fx-text-fill: white;");
+        // btnMascota.setStyle("-fx-font-size: 16px; -fx-background-color: #FF9800; -fx-text-fill: white;");
+        // btnCita.setStyle("-fx-font-size: 16px; -fx-background-color: #9C27B0; -fx-text-fill: white;");
+        // btnPaquete.setStyle("-fx-font-size: 16px; -fx-background-color: #3F51B5; -fx-text-fill: white;");
+        // btnVeterinario.setStyle("-fx-font-size: 16px; -fx-background-color: #009688; -fx-text-fill: white;");
+        // btnAsistente.setStyle("-fx-font-size: 16px; -fx-background-color: #8BC34A; -fx-text-fill: white;");
+        // btnGerente.setStyle("-fx-font-size: 16px; -fx-background-color: #FF5722; -fx-text-fill: white;");
+        // btnAdopcion.setStyle("-fx-font-size: 16px; -fx-background-color: #795548; -fx-text-fill: white;");
+        // btnTarjeta.setStyle("-fx-font-size: 16px; -fx-background-color: #607D8B; -fx-text-fill: white;");
+        // btnConsultaCitas.setStyle("-fx-font-size: 16px; -fx-background-color: #9E9E9E; -fx-text-fill: white;");
+        // // Acciones
         btnCliente.setOnAction(e -> new ClientRegister().start(new Stage())); // Reutiliza formulario de cliente
         btnClienteController.setOnAction(e -> new ClienteControllerFX().mostrarVentanaRegistro()); // Abre ventana de registro de client
         btnMascota.setOnAction(e -> new MascotaFXApp().start(new Stage()));
@@ -49,8 +63,9 @@ public class MascotitasMainMenu extends Application {
         btnGerente.setOnAction(e -> new AltaGerenteFX().start(new Stage()));
         btnAdopcion.setOnAction(e -> new AdopcionFXApp().start(new Stage()));
         btnTarjeta.setOnAction(e -> new TarjetaFXApp().start(new Stage())); // Abre ventana de registro de tarjeta
+        btnConsultaCitas.setOnAction(e -> new ConsultaCitasFXApp().start(new Stage())); // Abre ventana de consulta de citas
 
-        VBox layout = new VBox(15, btnCliente, btnClienteController, btnMascota, btnCita, btnPaquete, btnVeterinario, btnAsistente, btnGerente, btnAdopcion, btnTarjeta);
+        VBox layout = new VBox(15, btnCliente, btnClienteController, btnMascota, btnCita, btnPaquete, btnVeterinario, btnAsistente, btnGerente, btnAdopcion, btnTarjeta, btnConsultaCitas);
         layout.setAlignment(Pos.CENTER);
         layout.setStyle("-fx-padding: 30; -fx-background-color: linear-gradient(to bottom right, #F3F3F3, #E8EAF6);");
 

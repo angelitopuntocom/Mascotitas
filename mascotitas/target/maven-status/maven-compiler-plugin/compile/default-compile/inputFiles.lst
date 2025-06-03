@@ -27,6 +27,7 @@
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/dao/GerenteDAO.java
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/service/PagoService.java
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/app/MascotaFXApp.java
+/home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/app/ConsultaCitasFXApp.java
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/dao/ClienteDAO.java
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/exception/TarjetaInvalidaException.java
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/model/Veterinario.java
