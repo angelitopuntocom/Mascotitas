@@ -1,0 +1,11 @@
+Resumen de Cita
+---------------------
+Número de cita: 2
+Fecha: 2025-06-18 14:00:00.0
+Cliente: Jared  Nunez Bonilla
+Mascota: Huarache
+Veterinario: Sisisis
+Asistente: No asignado
+Descripción: sadasd
+Paquetes: 
+  - Vacunas ($40.0)

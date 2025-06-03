@@ -29,6 +29,31 @@ public class CitaFXApp extends Application {
 
     private final CitaService citaService = new CitaService();
 
+    private void exportarResumenCita(Cita cita) {
+        try {
+            String nombreArchivo = "cita_" + cita.getNumeroCita() + ".txt";
+            String contenido = "Resumen de Cita\n"
+                    + "---------------------\n"
+                    + "Número de cita: " + cita.getNumeroCita() + "\n"
+                    + "Fecha: " + cita.getFechaHora() + "\n"
+                    + "Cliente: " + (cita.getCliente() != null ? cita.getCliente().getNombreCompleto() : "No asignado") + "\n"
+                    + "Mascota: " + (cita.getMascota() != null ? cita.getMascota().getNombre() : "No asignada") + "\n"
+                    + "Veterinario: " + (cita.getVeterinario() != null ? cita.getVeterinario().getNombre() : "No asignado") + "\n"
+                    + "Asistente: " + (cita.getAsistente() != null ? cita.getAsistente().getNombre() : "No asignado") + "\n"
+                    + "Descripción: " + cita.getDescripcion() + "\n"
+                    + "Paquetes: \n";
+
+            for (Paquete p : cita.getPaquetes()) {
+                contenido += "  - " + p.getNombre() + " ($" + p.getPrecio() + ")\n";
+            }
+
+            java.nio.file.Files.write(java.nio.file.Paths.get(nombreArchivo), contenido.getBytes());
+            System.out.println("📄 Resumen exportado: " + nombreArchivo);
+        } catch (Exception e) {
+            System.err.println("❌ Error al exportar el resumen de la cita: " + e.getMessage());
+        }
+    }
+    
     @Override
     public void start(Stage primaryStage) {
         ComboBox<Cliente> cbCliente = new ComboBox<>();
@@ -106,6 +131,7 @@ public class CitaFXApp extends Application {
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION, "✅ Cita registrada y pagada exitosamente.");
                 alert.show();
+                exportarResumenCita(cita);
 
             } catch (Exception ex) {
                 ex.printStackTrace();
