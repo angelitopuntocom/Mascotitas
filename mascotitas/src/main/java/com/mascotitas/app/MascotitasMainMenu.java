@@ -25,6 +25,8 @@ public class MascotitasMainMenu extends Application {
         Button btnVeterinario = new Button("👨‍⚕️ Registrar Veterinario");
         Button btnAsistente = new Button("👩‍⚕️ Registrar Asistente");
         Button btnGerente = new Button("👨‍💼 Registrar Gerente");
+        Button btnAdopcion = new Button("🐾 Registrar Adopción");
+        Button btnTarjeta = new Button("💳 Registrar Tarjeta");
 
         btnCliente.setMinWidth(200);
         btnClienteController.setMinWidth(200);
@@ -34,7 +36,8 @@ public class MascotitasMainMenu extends Application {
         btnVeterinario.setMinWidth(200);
         btnAsistente.setMinWidth(200);
         btnGerente.setMinWidth(200);
-
+        btnAdopcion.setMinWidth(200);
+        btnTarjeta.setMinWidth(200);
         // Acciones
         btnCliente.setOnAction(e -> new ClientRegister().start(new Stage())); // Reutiliza formulario de cliente
         btnClienteController.setOnAction(e -> new ClienteControllerFX().mostrarVentanaRegistro()); // Abre ventana de registro de client
@@ -44,8 +47,10 @@ public class MascotitasMainMenu extends Application {
         btnVeterinario.setOnAction(e -> new VeterinarioForm().mostrarFormulario());
         btnAsistente.setOnAction(e -> new AsistenteForm().mostrarFormulario());
         btnGerente.setOnAction(e -> new AltaGerenteFX().start(new Stage()));
+        btnAdopcion.setOnAction(e -> new AdopcionFXApp().start(new Stage()));
+        btnTarjeta.setOnAction(e -> new TarjetaFXApp().start(new Stage())); // Abre ventana de registro de tarjeta
 
-        VBox layout = new VBox(15, btnCliente, btnClienteController, btnMascota, btnCita, btnPaquete, btnVeterinario, btnAsistente, btnGerente);
+        VBox layout = new VBox(15, btnCliente, btnClienteController, btnMascota, btnCita, btnPaquete, btnVeterinario, btnAsistente, btnGerente, btnAdopcion, btnTarjeta);
         layout.setAlignment(Pos.CENTER);
         layout.setStyle("-fx-padding: 30; -fx-background-color: linear-gradient(to bottom right, #F3F3F3, #E8EAF6);");
 

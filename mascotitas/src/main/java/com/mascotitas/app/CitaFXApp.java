@@ -2,6 +2,7 @@ package com.mascotitas.app;
 
 import com.mascotitas.model.*;
 import com.mascotitas.service.CitaService;
+import com.mascotitas.service.PagoService;
 import com.mascotitas.exception.*;
 
 import javafx.application.Application;
@@ -48,7 +49,19 @@ public class CitaFXApp extends Application {
         PaqueteDAO paqueteDAO = new PaqueteDAO();
 
         cbCliente.setItems(FXCollections.observableArrayList(clienteDAO.listarTodos()));
-        cbMascota.setItems(FXCollections.observableArrayList(mascotaDAO.listarTodos()));
+
+        cbCliente.valueProperty().addListener((obs, oldVal, newVal) -> {
+            if (newVal != null) {
+                // Cargar mascotas directamente desde la base de datos
+                List<Mascota> mascotasCliente = mascotaDAO.buscarPorClienteId(newVal.getNumeroCliente());
+                cbMascota.setItems(FXCollections.observableArrayList(mascotasCliente));
+            } else {
+                cbMascota.getItems().clear();
+            }
+        });
+
+
+        //cbMascota.setItems(FXCollections.observableArrayList(mascotaDAO.listarTodos()));
         cbVeterinario.setItems(FXCollections.observableArrayList(veterinarioDAO.listarTodos()));
         cbAsistente.setItems(FXCollections.observableArrayList(asistenteDAO.listarTodos()));
         lvPaquetes.setItems(FXCollections.observableArrayList(paqueteDAO.listarTodos()));
@@ -60,25 +73,47 @@ public class CitaFXApp extends Application {
                 Cita cita = new Cita();
                 cita.setCliente(cbCliente.getValue());
                 cita.setMascota(cbMascota.getValue());
-
                 LocalDate fecha = datePicker.getValue();
                 LocalTime hora = LocalTime.parse(timeField.getText());
                 cita.setFechaHora(java.sql.Timestamp.valueOf(LocalDateTime.of(fecha, hora)));
-
                 cita.setVeterinario(cbVeterinario.getValue());
                 cita.setAsistente(cbAsistente.getValue());
                 cita.setDescripcion(descripcionArea.getText());
-                cita.setPaquetes(new ArrayList<>(lvPaquetes.getSelectionModel().getSelectedItems()));
+                // cita.setPaquetes(new ArrayList<>(lvPaquetes.getSelectionModel().getSelectedItems()));
+                // ✅ VALIDACIÓN DE PAQUETES
+                List<Paquete> paquetesSeleccionados = new ArrayList<>(lvPaquetes.getSelectionModel().getSelectedItems());
+                if (paquetesSeleccionados.isEmpty()) {
+                    throw new Exception("Debe seleccionar al menos un paquete.");
+                }
+                cita.setPaquetes(paquetesSeleccionados);
 
+
+                // ✅ VALIDACIÓN DE CLIENTE Y TARJETA
+                if (cita.getCliente() == null || cita.getCliente().getTarjeta() == null) {
+                    throw new Exception("El cliente o su tarjeta no están definidos.");
+                }
+                
                 citaService.agendarCita(cita);
+                Tarjeta tarjeta = cita.getCliente().getTarjeta();
+                PagoService pagoService = new PagoService();
+                double monto = 500.0;
 
-                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Cita registrada exitosamente.");
+                if (!pagoService.cobrar(tarjeta, monto)) {
+                    Alert error = new Alert(Alert.AlertType.ERROR, "❌ No se pudo procesar el pago con tarjeta.");
+                    error.show();
+                    return;
+                }
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "✅ Cita registrada y pagada exitosamente.");
                 alert.show();
+
             } catch (Exception ex) {
+                ex.printStackTrace();
                 Alert error = new Alert(Alert.AlertType.ERROR, ex.getMessage());
                 error.show();
             }
         });
+
 
         VBox layout = new VBox(10,
             new Label("Cliente"), cbCliente,

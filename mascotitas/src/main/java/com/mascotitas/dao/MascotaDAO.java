@@ -2,6 +2,9 @@ package com.mascotitas.dao;
 
 import com.mascotitas.model.Mascota;
 import com.mascotitas.util.HibernateUtil;
+
+import jakarta.persistence.EntityManager;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import java.util.Collections;
@@ -29,4 +32,27 @@ public class MascotaDAO {
             return java.util.Collections.emptyList();
         }
     }
+    public void actualizar(Mascota mascota) {
+        EntityManager em = HibernateUtil.getSessionFactory().createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.merge(mascota);  // Actualiza la mascota
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
+    }
+    public List<Mascota> buscarPorClienteId(int idCliente) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        List<Mascota> mascotas = session
+            .createQuery("FROM Mascota m WHERE m.cliente.id = :id", Mascota.class)
+            .setParameter("id", idCliente)
+            .list();
+        session.close();
+        return mascotas;
+    }
+
 }

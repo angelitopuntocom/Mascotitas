@@ -24,6 +24,9 @@ public class Tarjeta {
     @Column(nullable = false)
     private short cvc;
 
+    @Column(nullable = false)
+    private double saldo = 1000.0;
+
     public Tarjeta() {}
 
     public Tarjeta(long numero, Date vencimiento, short cvc) {
@@ -42,6 +45,9 @@ public class Tarjeta {
 
     public short getCvc() { return cvc; }
     public void setCvc(short cvc) { this.cvc = cvc; }
+
+    public double getSaldo() { return saldo; }
+    public void setSaldo(double saldo) { this.saldo = saldo; }
 
     @Override
     public String toString() {

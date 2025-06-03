@@ -26,7 +26,6 @@ public class Mascota {
     @Column
     private int edad;
 
-
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "vacunas", joinColumns = @JoinColumn(name = "numero_mascota"))
     @Column(name = "nombre_vacuna")
@@ -36,13 +35,17 @@ public class Mascota {
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
+    // Constructor vacío obligatorio para Hibernate
     public Mascota() {}
 
+    // ✅ Constructor útil para formularios (sin ID manual)
     public Mascota(String nombre, String raza) {
         this.nombre = nombre;
         this.raza = raza;
+        this.vacunas = new ArrayList<>();
     }
 
+    // Getters y Setters
     public int getNumeroMascota() { return numeroMascota; }
 
     public String getNombre() { return nombre; }

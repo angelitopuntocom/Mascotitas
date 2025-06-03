@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class MascotaFXApp extends Application {
@@ -35,6 +36,9 @@ public class MascotaFXApp extends Application {
         List<Cliente> clientes = new ClienteDAO().obtenerTodos();
         clienteComboBox.getItems().addAll(clientes);
 
+        TextField vacunasField = new TextField();
+        vacunasField.setPromptText("Vacunas (separadas por coma)");
+
         Button guardarBtn = new Button("Registrar Mascota");
         Label statusLabel = new Label();
 
@@ -47,10 +51,21 @@ public class MascotaFXApp extends Application {
                 mascota.setEdad(Integer.parseInt(edadField.getText()));
                 mascota.setCliente(clienteComboBox.getValue());
 
+                // 🟨 Aquí agregas las vacunas desde el TextField
+                String vacunasTexto = vacunasField.getText();
+                if (vacunasTexto != null && !vacunasTexto.isBlank()) {
+                    List<String> vacunas = Arrays.stream(vacunasTexto.split(","))
+                                                .map(String::trim)
+                                                .filter(v -> !v.isEmpty())
+                                                .toList();
+                    mascota.setVacunas(vacunas);
+                }
+
                 new MascotaDAO().guardar(mascota);
 
                 statusLabel.setText("Mascota registrada correctamente.");
                 nombreField.clear(); tipoField.clear(); razaField.clear(); edadField.clear();
+                vacunasField.clear(); // <-- Limpia el campo de vacunas también
                 clienteComboBox.getSelectionModel().clearSelection();
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -58,7 +73,7 @@ public class MascotaFXApp extends Application {
             }
         });
 
-        VBox layout = new VBox(10, nombreField, tipoField, razaField, edadField, clienteComboBox, guardarBtn, statusLabel);
+        VBox layout = new VBox(10, nombreField, tipoField, razaField, edadField, clienteComboBox, vacunasField, guardarBtn, statusLabel);
         layout.setPadding(new Insets(20));
 
         Scene scene = new Scene(layout, 400, 400);

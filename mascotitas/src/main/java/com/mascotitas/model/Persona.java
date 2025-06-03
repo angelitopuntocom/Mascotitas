@@ -53,4 +53,12 @@ public abstract class Persona {
     public String toString() {
         return nombre + " " + (paterno != null ? paterno : "") + " " + (materno != null ? materno : "");
     }
+    
+    public String getNombreCompleto() {
+        StringBuilder nombreCompleto = new StringBuilder(nombre);
+        if (paterno != null && !paterno.isEmpty()) nombreCompleto.append(" ").append(paterno);
+        if (materno != null && !materno.isEmpty()) nombreCompleto.append(" ").append(materno);
+        return nombreCompleto.toString();
+    }
+
 }
