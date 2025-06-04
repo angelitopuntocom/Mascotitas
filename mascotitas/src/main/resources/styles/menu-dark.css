@@ -1,0 +1,70 @@
+.root {
+    -fx-background-color: linear-gradient(to bottom, #212121, #424242);
+    background-color: #212121;
+    -fx-padding: 10px;
+}
+
+
+
+.titulo {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #FFD600;
+}
+
+.button {
+    -fx-background-color: #455A64;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 8px;
+    -fx-padding: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(255,255,255,0.1), 4, 0.0, 0, 2);
+}
+
+.button:hover {
+    -fx-background-color: #607D8B;
+}
+
+.group-box {
+    -fx-background-color: #37474F;
+    background-color: #37474F;
+    -fx-border-color: #90CAF9;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-padding: 15px;
+    -fx-spacing: 10px;
+    -fx-max-width: 400px;
+}
+
+.label {
+    -fx-text-fill: #ECEFF1;
+}
+
+.text-field {
+    -fx-background-color: #546E7A;
+    background-color: #546E7A;
+    -fx-text-fill: white;
+    -fx-border-color: #90CAF9;
+    -fx-border-radius: 4px;
+    -fx-padding: 5px;
+}
+
+/* Fondo personalizado:
+.root {
+    -fx-background-image: url("/images/fondo-oscuro.jpg");
+    -fx-background-size: cover;
+}
+*/
+.boton-cambiar-tema {
+    -fx-background-color: #FFA726;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
+    -fx-background-radius: 8px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 4, 0.0, 0, 2);
+    -fx-cursor: hand;
+}
+.boton-cambiar-tema:hover {
+    -fx-background-color: #FB8C00;
+}
