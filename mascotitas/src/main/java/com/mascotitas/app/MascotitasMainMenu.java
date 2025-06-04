@@ -17,17 +17,18 @@ public class MascotitasMainMenu extends Application {
     @Override
     public void start(Stage primaryStage) {
         // Botones del menú
-        Button btnCliente = new Button("🧍 Registrar Cliente");
-        Button btnClienteController = new Button("👨‍⚕️ Registrar Cliente (Controller)");
-        Button btnMascota = new Button("🐶 Registrar Mascota");
-        Button btnCita = new Button("📅 Registrar Cita");
-        Button btnPaquete = new Button("📦 Registrar Paquete");
-        Button btnVeterinario = new Button("👨‍⚕️ Registrar Veterinario");
-        Button btnAsistente = new Button("👩‍⚕️ Registrar Asistente");
-        Button btnGerente = new Button("👨‍💼 Registrar Gerente");
-        Button btnAdopcion = new Button("🐾 Registrar Adopción");
-        Button btnTarjeta = new Button("💳 Registrar Tarjeta");
-        Button btnConsultaCitas = new Button("🔍 Consultar Citas");
+        Button btnCliente = new Button("Registrar Cliente");
+        Button btnClienteController = new Button("Registrar Cliente (Controller)");
+        Button btnMascota = new Button("Registrar Mascota");
+        Button btnCita = new Button("Registrar Cita");
+        Button btnPaquete = new Button("Registrar Paquete");
+        Button btnVeterinario = new Button("Registrar Veterinario");
+        Button btnAsistente = new Button("Registrar Asistente");
+        Button btnGerente = new Button("Registrar Gerente");
+        Button btnAdopcion = new Button("Registrar Adopción");
+        Button btnTarjeta = new Button("Registrar Tarjeta");
+        Button btnConsultaCitas = new Button("Consultar Citas");
+        Button btnEliminarPersonal = new Button("Eliminar Personal");
 
         btnCliente.setMinWidth(200);
         btnClienteController.setMinWidth(200);
@@ -40,6 +41,7 @@ public class MascotitasMainMenu extends Application {
         btnAdopcion.setMinWidth(200);
         btnTarjeta.setMinWidth(200);
         btnConsultaCitas.setMinWidth(200);
+        btnEliminarPersonal.setMinWidth(200);
 
         // btnCliente.setStyle("-fx-font-size: 16px; -fx-background-color: #4CAF50; -fx-text-fill: white;");
         // btnClienteController.setStyle("-fx-font-size: 16px; -fx-background-color: #2196F3; -fx-text-fill: white;");
@@ -64,12 +66,13 @@ public class MascotitasMainMenu extends Application {
         btnAdopcion.setOnAction(e -> new AdopcionFXApp().start(new Stage()));
         btnTarjeta.setOnAction(e -> new TarjetaFXApp().start(new Stage())); // Abre ventana de registro de tarjeta
         btnConsultaCitas.setOnAction(e -> new ConsultaCitasFXApp().start(new Stage())); // Abre ventana de consulta de citas
+        btnEliminarPersonal.setOnAction(e -> new EliminarPersonalFXApp().start(new Stage())); // Abre ventana de eliminar personal
 
-        VBox layout = new VBox(15, btnCliente, btnClienteController, btnMascota, btnCita, btnPaquete, btnVeterinario, btnAsistente, btnGerente, btnAdopcion, btnTarjeta, btnConsultaCitas);
+        VBox layout = new VBox(15, btnCliente, btnClienteController, btnMascota, btnCita, btnPaquete, btnVeterinario, btnAsistente, btnGerente, btnAdopcion, btnTarjeta, btnConsultaCitas, btnEliminarPersonal);
         layout.setAlignment(Pos.CENTER);
         layout.setStyle("-fx-padding: 30; -fx-background-color: linear-gradient(to bottom right, #F3F3F3, #E8EAF6);");
 
-        Scene scene = new Scene(layout, 400, 400);
+        Scene scene = new Scene(layout, 500, 500);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Sistema Mascotitas - Menú Principal");
         primaryStage.show();

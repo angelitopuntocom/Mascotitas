@@ -44,7 +44,7 @@ public class TarjetaFXApp extends Application {
                 Cliente cliente = clienteComboBox.getValue();
 
                 if (cliente == null) {
-                    statusLabel.setText("⚠️ Selecciona un cliente.");
+                    statusLabel.setText(" Selecciona un cliente.");
                     return;
                 }
 
@@ -53,12 +53,12 @@ public class TarjetaFXApp extends Application {
 
                 new ClienteDAO().actualizar(cliente);
 
-                statusLabel.setText("✅ Tarjeta guardada correctamente.");
+                statusLabel.setText(" Tarjeta guardada correctamente.");
                 numeroField.clear(); vencimientoField.clear(); cvcField.clear();
                 clienteComboBox.getSelectionModel().clearSelection();
             } catch (Exception ex) {
                 ex.printStackTrace();
-                statusLabel.setText("❌ Error al guardar tarjeta.");
+                statusLabel.setText("Error al guardar tarjeta.");
             }
         });
 

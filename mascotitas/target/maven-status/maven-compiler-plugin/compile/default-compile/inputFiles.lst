@@ -15,6 +15,7 @@
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/service/AdopcionService.java
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/model/Gerente.java
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/model/enums/Sucursal.java
+/home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/app/EliminarPersonalFXApp.java
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/interfaces/RevisionDeCitas.java
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/model/Tarjeta.java
 /home/jarednb/fca/prograproyect/Mascotitas/mascotitas/src/main/java/com/mascotitas/exception/MascotaSinVacunasException.java

@@ -1,0 +1,11 @@
+Resumen de Cita
+---------------------
+Número de cita: 3
+Fecha: 2025-06-25 10:00:00.0
+Cliente: Angel Riveron Badillo
+Mascota: Perrin
+Veterinario: Bety
+Asistente: No asignado
+Descripción: SALJDLASD
+Paquetes: 
+  - Operacion ($950.0)

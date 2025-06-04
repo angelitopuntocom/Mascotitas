@@ -100,7 +100,6 @@ public class ConsultaCitasFXApp extends Application {
         primaryStage.show();
     }
 
-    // ✅ Este método debe estar fuera del método start()
     private void mostrarAlerta(String mensaje) {
         Alert alerta = new Alert(Alert.AlertType.WARNING);
         alerta.setTitle("Advertencia");

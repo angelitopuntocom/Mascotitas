@@ -36,12 +36,12 @@ public class PaqueteFXApp extends Application {
                 Paquete paquete = new Paquete(nombre, descripcion, precio);
                 new PaqueteDAO().guardar(paquete);
 
-                statusLabel.setText("✅ Paquete guardado con éxito");
+                statusLabel.setText(" Paquete guardado con éxito");
                 nombreField.clear();
                 descripcionField.clear();
                 precioField.clear();
             } catch (Exception ex) {
-                statusLabel.setText("❌ Error al guardar: " + ex.getMessage());
+                statusLabel.setText("Error al guardar: " + ex.getMessage());
             }
         });
 

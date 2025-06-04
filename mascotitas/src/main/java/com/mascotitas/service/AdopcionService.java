@@ -37,14 +37,14 @@ public class AdopcionService {
         }
 
         if (!mascotasDisponibles.contains(mascota)) {
-            System.out.println("⚠️ La mascota no está disponible para adopción.");
+            System.out.println("La mascota no está disponible para adopción.");
             return;
         }
 
         mascotasDisponibles.remove(mascota);
         mascotasAdoptadas.put(cliente, mascota);
 
-        System.out.println("✅ Adopción registrada: " + cliente.getNombreCompleto() + " adoptó a " + mascota.getNombre());
+        System.out.println("Adopción registrada: " + cliente.getNombreCompleto() + " adoptó a " + mascota.getNombre());
     }
 
     /**
@@ -55,20 +55,20 @@ public class AdopcionService {
         Mascota mascota = mascotasAdoptadas.remove(cliente);
 
         if (mascota == null) {
-            System.out.println("❌ El cliente no tiene mascotas adoptadas.");
+            System.out.println("El cliente no tiene mascotas adoptadas.");
             return;
         }
 
         mascotasDisponibles.add(mascota);
-        System.out.println("🐾 Mascota devuelta: " + mascota.getNombre());
+        System.out.println("Mascota devuelta: " + mascota.getNombre());
 
         if (maltrato) {
             Tarjeta tarjeta = cliente.getTarjeta();
             if (tarjeta != null) {
-                System.out.println("💳 Se ha cobrado $" + monto + " a la tarjeta del cliente " + cliente.getNombreCompleto());
+                System.out.println("Se ha cobrado $" + monto + " a la tarjeta del cliente " + cliente.getNombreCompleto());
                 // Aquí podrías guardar un registro o descontar saldo simulado
             } else {
-                System.out.println("❌ No se pudo cobrar: el cliente no tiene tarjeta registrada.");
+                System.out.println("No se pudo cobrar: el cliente no tiene tarjeta registrada.");
             }
         }
     }

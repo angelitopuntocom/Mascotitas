@@ -17,7 +17,7 @@ public class Cliente extends Persona {
     private int numeroCliente;
 
     @Column(length = 20)
-    private String telefono; // ✅ Aquí se declara
+    private String telefono; // Aquí se declara
     
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Mascota> mascotas = new ArrayList<>();
@@ -35,7 +35,7 @@ public class Cliente extends Persona {
     }
 
 
-    // ✅ Getters y setters para teléfono
+    //  Getters y setters para teléfono
     public String getTelefono() {
         return telefono;
     }

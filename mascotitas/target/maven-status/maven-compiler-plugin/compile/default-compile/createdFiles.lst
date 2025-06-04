@@ -17,6 +17,7 @@ com/mascotitas/app/AdopcionFXApp.class
 com/mascotitas/ui/AsistenteForm.class
 com/mascotitas/dao/GerenteDAO.class
 com/mascotitas/app/ConsultaCitasFXApp.class
+com/mascotitas/app/EliminarPersonalFXApp.class
 com/mascotitas/exception/CitaOcupadaException.class
 com/mascotitas/exception/VeterinarioNoDisponibleException.class
 com/mascotitas/model/Tarjeta.class

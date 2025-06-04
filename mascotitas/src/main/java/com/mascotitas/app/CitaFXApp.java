@@ -48,9 +48,9 @@ public class CitaFXApp extends Application {
             }
 
             java.nio.file.Files.write(java.nio.file.Paths.get(nombreArchivo), contenido.getBytes());
-            System.out.println("📄 Resumen exportado: " + nombreArchivo);
+            System.out.println("Resumen exportado: " + nombreArchivo);
         } catch (Exception e) {
-            System.err.println("❌ Error al exportar el resumen de la cita: " + e.getMessage());
+            System.err.println("Error al exportar el resumen de la cita: " + e.getMessage());
         }
     }
     
@@ -104,8 +104,6 @@ public class CitaFXApp extends Application {
                 cita.setVeterinario(cbVeterinario.getValue());
                 cita.setAsistente(cbAsistente.getValue());
                 cita.setDescripcion(descripcionArea.getText());
-                // cita.setPaquetes(new ArrayList<>(lvPaquetes.getSelectionModel().getSelectedItems()));
-                // ✅ VALIDACIÓN DE PAQUETES
                 List<Paquete> paquetesSeleccionados = new ArrayList<>(lvPaquetes.getSelectionModel().getSelectedItems());
                 if (paquetesSeleccionados.isEmpty()) {
                     throw new Exception("Debe seleccionar al menos un paquete.");
@@ -113,7 +111,7 @@ public class CitaFXApp extends Application {
                 cita.setPaquetes(paquetesSeleccionados);
 
 
-                // ✅ VALIDACIÓN DE CLIENTE Y TARJETA
+                // VALIDACIÓN DE CLIENTE Y TARJETA
                 if (cita.getCliente() == null || cita.getCliente().getTarjeta() == null) {
                     throw new Exception("El cliente o su tarjeta no están definidos.");
                 }
@@ -124,12 +122,12 @@ public class CitaFXApp extends Application {
                 double monto = 500.0;
 
                 if (!pagoService.cobrar(tarjeta, monto)) {
-                    Alert error = new Alert(Alert.AlertType.ERROR, "❌ No se pudo procesar el pago con tarjeta.");
+                    Alert error = new Alert(Alert.AlertType.ERROR, "No se pudo procesar el pago con tarjeta.");
                     error.show();
                     return;
                 }
 
-                Alert alert = new Alert(Alert.AlertType.INFORMATION, "✅ Cita registrada y pagada exitosamente.");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Cita registrada y pagada exitosamente.");
                 alert.show();
                 exportarResumenCita(cita);
 

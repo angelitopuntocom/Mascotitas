@@ -46,7 +46,7 @@ public class AdopcionFXApp extends Application {
         cbMascotas.setItems(FXCollections.observableArrayList(disponibles));
 
 
-        // 🎛 Controles
+        // Controles
         //ComboBox<Cliente> cbClientes = new ComboBox<>(FXCollections.observableArrayList(clientesSimulados));
         //ComboBox<Mascota> cbMascotas = new ComboBox<>(FXCollections.observableArrayList(adopcionService.getMascotasDisponibles()));
         Button btnAdoptar = new Button("Adoptar");
@@ -56,28 +56,28 @@ public class AdopcionFXApp extends Application {
         TextArea output = new TextArea();
         output.setEditable(false);
 
-        // 🎯 Adoptar acción
+        // Adoptar acción
         btnAdoptar.setOnAction(e -> {
             Cliente cliente = cbClientes.getValue();
             Mascota mascota = cbMascotas.getValue();
 
             if (cliente == null || mascota == null) {
-                output.appendText("⚠️ Selecciona cliente y mascota.\n");
+                output.appendText("Selecciona cliente y mascota.\n");
                 return;
             }
 
             try {
                 adopcionService.adoptarMascota(cliente, mascota);
 
-                // 🔽 AQUI VA LA ACTUALIZACIÓN EN LA BASE DE DATOS
+                // ACTUALIZACIÓN EN LA BASE DE DATOS
                 mascota.setCliente(cliente);
                 new MascotaDAO().actualizar(mascota); // Esto guarda en la BD que ya fue adoptada
 
                 cbMascotas.setItems(FXCollections.observableArrayList(adopcionService.getMascotasDisponibles()));
-                output.appendText("✅ Adopción: " + cliente.getNombre() + " adoptó a " + mascota.getNombre() + "\n");
+                output.appendText(" Adopción: " + cliente.getNombre() + " adoptó a " + mascota.getNombre() + "\n");
 
             } catch (MascotaSinVacunasException ex) {
-                output.appendText("❌ " + ex.getMessage() + "\n");
+                output.appendText(" " + ex.getMessage() + "\n");
             }
         });
 
@@ -85,7 +85,7 @@ public class AdopcionFXApp extends Application {
         btnDevolver.setOnAction(e -> {
             Cliente cliente = cbClientes.getValue();
             if (cliente == null) {
-                output.appendText("⚠️ Selecciona un cliente.\n");
+                output.appendText(" Selecciona un cliente.\n");
                 return;
             }
 
@@ -94,7 +94,7 @@ public class AdopcionFXApp extends Application {
             try {
                 monto = Double.parseDouble(tfMonto.getText());
             } catch (NumberFormatException ex) {
-                output.appendText("❌ Monto inválido.\n");
+                output.appendText(" Monto inválido.\n");
                 return;
             }
 
@@ -103,18 +103,18 @@ public class AdopcionFXApp extends Application {
                 PagoService pagoService = new PagoService();
 
                 if (!pagoService.cobrar(tarjeta, monto)) {
-                    output.appendText("❌ No se pudo procesar el cobro por maltrato.\n");
+                    output.appendText(" No se pudo procesar el cobro por maltrato.\n");
                     return;
                 }
             }
 
             adopcionService.devolverMascota(cliente, maltrato, monto);
             cbMascotas.setItems(FXCollections.observableArrayList(adopcionService.getMascotasDisponibles()));
-            output.appendText("↩️ Devolución procesada para " + cliente.getNombre() + "\n");
+            output.appendText("Devolución procesada para " + cliente.getNombre() + "\n");
         });
 
 
-        // 🖼 Layout
+        // Diseño de la interfaz
         VBox root = new VBox(10,
                 new Label("Selecciona Cliente:"),
                 cbClientes,
@@ -131,7 +131,7 @@ public class AdopcionFXApp extends Application {
         root.setPadding(new Insets(20));
 
         stage.setScene(new Scene(root, 450, 500));
-        stage.setTitle("🐾 Adopción y Devolución de Mascotas");
+        stage.setTitle("Adopción y Devolución de Mascotas");
         stage.show();
     }
 
